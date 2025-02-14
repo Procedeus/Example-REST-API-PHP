@@ -1,5 +1,5 @@
 .htaccess: é um arquivo usado para realizado configuração do Apache, permitindo definir regras em um diretório e em todos os seus subdiretórios.
-```
+```php
 //RewriteEngine On ativa o mecanismo de reescrita de URLs do Apache;
 RewriteEngine On
 //^(.*)$ -> Expressão regular que corresponde a qualquer URL solicitada.
@@ -11,7 +11,7 @@ RewriteRule ^(.*)$ public/index.php [QSA,L]
 ```
 
 Public: É utilizada como ponto de entrada para as requisições.
-```
+```php
 
 // Carrega o autoloader do Composer;
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -28,7 +28,7 @@ require_once '../routes/api.php';
 handleRequest($pdo);
 ```
 Routes: A rota é uma correspondência entre uma URL solicitada e uma ação específica no código da aplicação, por exemplo, "url.com/rota1/".
-```
+```php
 //Inclui a classe UserController, responsável pelas entradas de informações interage com o Model e determina a resposta adequada;
 require_once '../controllers/UserController.php';
 
@@ -70,7 +70,7 @@ function handleRequest($pdo) {
 }
 ```
 Config: Responsável por armazenar as informações necessárias para a conexão com o banco de dados. Em seguida, utiliza-se o PDO (PHP Data Objects) para estabelecer a conexão, configurando-o para lançar exceções em caso de erros.
-```
+```php
 //Criação eas credenciais de acesso ao banco de dados;
 $host = $_ENV['DB_HOST'];
 $dbname = $_ENV['DB_NAME'];
@@ -93,7 +93,7 @@ try {
 ```
 
 Models: É responsável por gerenciar e manipular os dados, incluindo operações como criação, leitura(um ou todos), atualização e exclusão (CRUD).
-```
+```php
 //Criação de uma Classe User;
 class User {
 //Criação de um atributo privado PDO, que será a conexão com o banco de dados;
@@ -123,7 +123,7 @@ class User {
 ```
 
 Controllers: Atua como intermediário entre o Model e a View. O UserController recebe as entradas do usuário, processa essas informações interagindo com o Model e determina a resposta adequada, que pode envolver a execução de ações específicas.
-```
+```php
 require_once '../models/User.php';
 //Criação de uma Classe UserController;
 class UserController {
