@@ -1,4 +1,21 @@
-.htaccess: é um arquivo usado para realizado configuração do Apache, permitindo definir regras em um diretório e em todos os seus subdiretórios.
+## Exemplo de API REST em PHP
+Repositório destinado a uma breve explicação a respeito dos componentes basicos utilizados em uma API REST em PHP.
+
+### O que é uma API?
+Application Programming Interface (Interface de Programação de Aplicação): a API é uma "ponte" que permite que diferentes programas se "conversem" ou troquem informações. Em outras palavras, ela define como os programas podem interagir com outros sistemas, fornecendo uma maneira de acessar funcionalidades ou dados de outros aplicativos, sem precisar saber como esses sistemas foram implementados internamente.
+
+### O que é uma API REST?
+Uma API REST (Representational State Transfer): é um tipo de API web que utiliza conjunto de principios de arquitetua para realizar a comunicação entre sistemas pela web.
+
+### Tecnologias Utilizadas
+- PHP
+- MySQL
+- Composer (para gerenciamento de dependências)
+
+
+### Componentes comuns em uma API estruturada em PHP:
+
+__.htaccess:__ é um arquivo usado para realizado configuração do Apache, permitindo definir regras em um diretório e em todos os seus subdiretórios.
 ```php
 //RewriteEngine On ativa o mecanismo de reescrita de URLs do Apache;
 RewriteEngine On
@@ -10,7 +27,7 @@ RewriteEngine On
 RewriteRule ^(.*)$ public/index.php [QSA,L]
 ```
 
-Public: É utilizada como ponto de entrada para as requisições.
+__Public:__ É utilizada como ponto de entrada para as requisições.
 ```php
 
 // Carrega o autoloader do Composer;
@@ -27,7 +44,7 @@ require_once '../routes/api.php';
 //Chama a função das rotas da API, explicado abaixo;
 handleRequest($pdo);
 ```
-Routes: A rota é uma correspondência entre uma URL solicitada e uma ação específica no código da aplicação, por exemplo, "url.com/rota1/".
+__Routes:__ A rota é uma correspondência entre uma URL solicitada e uma ação específica no código da aplicação, por exemplo, "url.com/rota1/".
 ```php
 //Inclui a classe UserController, responsável pelas entradas de informações interage com o Model e determina a resposta adequada;
 require_once '../controllers/UserController.php';
@@ -69,7 +86,7 @@ function handleRequest($pdo) {
     }
 }
 ```
-Config: Responsável por armazenar as informações necessárias para a conexão com o banco de dados. Em seguida, utiliza-se o PDO (PHP Data Objects) para estabelecer a conexão, configurando-o para lançar exceções em caso de erros.
+__Config:__ Responsável por armazenar as informações necessárias para a conexão com o banco de dados. Em seguida, utiliza-se o PDO (PHP Data Objects) para estabelecer a conexão, configurando-o para lançar exceções em caso de erros.
 ```php
 //Criação eas credenciais de acesso ao banco de dados;
 $host = $_ENV['DB_HOST'];
@@ -92,7 +109,7 @@ try {
 }
 ```
 
-Models: É responsável por gerenciar e manipular os dados, incluindo operações como criação, leitura(um ou todos), atualização e exclusão (CRUD).
+__Models:__ É responsável por gerenciar e manipular os dados, incluindo operações como criação, leitura(um ou todos), atualização e exclusão (CRUD).
 ```php
 //Criação de uma Classe User;
 class User {
@@ -122,7 +139,7 @@ class User {
 }
 ```
 
-Controllers: Atua como intermediário entre o Model e a View. O UserController recebe as entradas do usuário, processa essas informações interagindo com o Model e determina a resposta adequada, que pode envolver a execução de ações específicas.
+__Controllers:__ Atua como intermediário entre o Model e a View. O UserController recebe as entradas do usuário, processa essas informações interagindo com o Model e determina a resposta adequada, que pode envolver a execução de ações específicas.
 ```php
 require_once '../models/User.php';
 //Criação de uma Classe UserController;
@@ -163,3 +180,7 @@ class UserController {
     }
 }
 ```
+
+## Licença
+
+Este projeto é licenciado sob a **Licença MIT** - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
